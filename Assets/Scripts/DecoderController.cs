@@ -19,7 +19,6 @@ public class DecoderController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(rayToMouse, out hit))
         {
-            Debug.Log("lol");
             if (hit.transform.gameObject.GetComponent<PawnController>() != null && Input.GetMouseButtonDown(0))
             {
                 hit.transform.gameObject.GetComponent<PawnController>().ChangeColor();
