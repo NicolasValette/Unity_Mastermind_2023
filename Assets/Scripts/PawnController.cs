@@ -44,6 +44,15 @@ public class PawnController : MonoBehaviour
         Debug.Log("Couleur = " + _gameManager.Colors[_actualIndColor].color.ToString());
         Debug.Log("Couleur = " + _color.material.color.ToString());
     }
+    public void ChangeColor(Material color)
+    {
+        //todo
+    }
+    public void ChangeColor(int colorInd)
+    {
+        _actualIndColor = colorInd;
+        _color.material = _gameManager.Colors[_actualIndColor];
+    }
     public void setActive(bool activity)
     {
         _collider.enabled = activity;

@@ -7,6 +7,7 @@ public class BoardController : MonoBehaviour
 {
     [SerializeField]
     private RowController[] _rows;
+    [SerializeField]
     private PawnController[] _code;
     private int _activeRow = -1;
 
@@ -15,7 +16,6 @@ public class BoardController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -27,15 +27,26 @@ public class BoardController : MonoBehaviour
             ActivateNextRow();
         }
 
+
     }
 
     private void prepareBoard()
     {
-        _code = new PawnController[5];
     }
-    private void SetupCode(Color[] colors)
+    public void SetupCode(Material[] colors)
     {
-
+        
+        for (int i = 0; i < colors.Length; i++)
+        {
+            
+        }
+    }
+    public void SetupCode(int[] colors)
+    {
+        for (int i = 0; i < colors.Length; i++)
+        {
+            _code[i].ChangeColor(colors[i]);
+        }
     }
     public void ActivateNextRow()
     {
