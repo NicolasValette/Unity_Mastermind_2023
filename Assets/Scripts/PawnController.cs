@@ -26,7 +26,7 @@ public class PawnController : MonoBehaviour
         
     }
 
-    private void ChangeColor()
+    public void ChangeColor()
     {
         _actualIndColor = _actualIndColor >= _materials.Length -1 ? 0 : _actualIndColor +1;
         _color.material = _materials[_actualIndColor];
