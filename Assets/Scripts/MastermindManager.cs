@@ -10,7 +10,10 @@ public class MastermindManager : MonoBehaviour
 
     [SerializeField]
     private Material _mActivePawnColor;
-
+    public Material ActivePawnColor
+    {
+        get { return _mActivePawnColor; }
+    }
     
     
     public Material [] Colors
@@ -24,6 +27,7 @@ public class MastermindManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //_mActivePawnColor.
     }
     public Material[] GetColors ()
     {

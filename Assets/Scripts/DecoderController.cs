@@ -14,6 +14,7 @@ public class DecoderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(rayToMouse.origin, rayToMouse.direction * 20f, Color.red);
         RaycastHit hit;

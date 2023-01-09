@@ -34,10 +34,6 @@ public class PawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ChangeColor();
-        }
         
     }
 
@@ -51,6 +47,10 @@ public class PawnController : MonoBehaviour
     public void setActive(bool activity)
     {
         _collider.enabled = activity;
+        if (activity)
+        {
+            _color.material = _gameManager.ActivePawnColor;
+        }
     }
 
 }
