@@ -46,6 +46,7 @@ public class RowController : MonoBehaviour
     public void ChangeCluesColors(Material goodColor, Material badColor)
     {
         int i = 0;
+        Debug.Log("Clue  : good : " + CorrectColors + " Dab pos : " + UncorrectPos);
         for (i = 0; i < CorrectColors; i++)
         {
             Clues[i].ChangeColor(goodColor);

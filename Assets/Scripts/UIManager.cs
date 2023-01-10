@@ -18,15 +18,16 @@ public class UIManager : MonoBehaviour
     }
     public void OnEnable()
     {
-        _check.onClick.AddListener(CheckButton);
+       // _check.onClick.AddListener(CheckButton);
         _start.onClick.AddListener(StartButton);
         MastermindManager.OnStart += StartGame;
         RowController.OnValid += CheckButton;
+        CoderController.OnAnswer += CheckButton;
 
     }
     public void OnDisable()
     {
-        _check.onClick.RemoveListener(CheckButton);
+        //_check.onClick.RemoveListener(CheckButton);
         _start.onClick.RemoveListener(StartButton);
         MastermindManager.OnStart -= StartGame;
         RowController.OnValid -= CheckButton;
