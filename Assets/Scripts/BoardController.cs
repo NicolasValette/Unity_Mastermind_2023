@@ -50,10 +50,12 @@ public class BoardController : MonoBehaviour
     private void OnEnable()
     {
         MastermindManager.OnStart += ActivateNextRow;
+        CoderController.OnAnswer += ActivateNextRow;
     }
     private void OnDisable()
     {
         MastermindManager.OnStart -= ActivateNextRow;
+        CoderController.OnAnswer -= ActivateNextRow;
     }
 
 
