@@ -9,6 +9,18 @@ public class BoardController : MonoBehaviour
     private RowController[] _rows;
     [SerializeField]
     private PawnController[] _code;
+    public Material[] Code
+    {
+        get
+        {
+            Material[] materials = new Material[_code.Length];
+            for (int i= 0;i< _code.Length; i++)
+            {
+                //materials[i] = _code[i].
+            }
+            return materials;
+        }
+    }
     private int _activeRow = -1;
 
 
@@ -61,6 +73,23 @@ public class BoardController : MonoBehaviour
 
             _rows[_activeRow].SwitchActive();         // and activate the next row
         }
+    }
+    public bool VerifyRow (int rowToCheck)
+    {
 
+        int nbGoodAnswers = 0;              // the value to return
+                                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////// A TEST
+        for (int i = 0; i < _gameManager.CodeLength; i++)
+        {
+            if (_rows[rowToCheck].Pawns[i].color == _goBoard.Code[i].color)
+            {
+                nbGoodAnswers++;
+            }
+        }
+
+        return nbGoodAnswers;              // the value to return
+
+
+        return false;
     }
 }

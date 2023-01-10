@@ -8,8 +8,10 @@ public class RowController : MonoBehaviour
     private PawnController[] _pawns;
     private int _nbCorrectColors = 0;
     private int _nbUncorrectPos;
+    public bool isValide{get; private set;}
 
     public bool IsActive { get; private set; } = false;
+    public PawnController[] Pawns { get; private set; }
 
     // Start is called before the first frame update
     void Start()

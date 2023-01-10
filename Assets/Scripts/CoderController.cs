@@ -37,4 +37,20 @@ public class CoderController : MonoBehaviour
         return materialsInd;
     }
 
+    public int checkCode(Material[] codeToCheck)
+    {
+        int nbGoodAnswers = 0;              // the value to return
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// A TEST
+        for (int i = 0;i < _gameManager.CodeLength;i++)
+        {
+            if (codeToCheck[i].color == _goBoard.Code[i].color)
+            {
+                nbGoodAnswers++;
+            }
+        }
+
+        return nbGoodAnswers;              // the value to return
+        
+    }
+
 }

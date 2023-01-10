@@ -10,6 +10,11 @@ public class MastermindManager : MonoBehaviour
 
     [SerializeField]
     private Material _mActivePawnColor;
+
+    [SerializeField]
+    private int _codeLength;
+    public int CodeLength { get; private set; }
+    
     public Material ActivePawnColor
     {
         get { return _mActivePawnColor; }
