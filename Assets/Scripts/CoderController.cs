@@ -24,11 +24,13 @@ public class CoderController : MonoBehaviour
     {
         //BoardController.OnVerify += checkCode;//
         CheckButton.onClick.AddListener(checkCode);
+        MastermindManager.OnStart += StartGame;
     }
     public void OnDisable()
     {
         //BoardController.OnVerify -= checkCode;
         CheckButton.onClick.RemoveListener(checkCode);
+        MastermindManager.OnStart -= StartGame;
     }
     // Update is called once per frame
     void Update()
@@ -36,16 +38,22 @@ public class CoderController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             Debug.Log("Start (CoderController)");
-            _goBoard.SetupCode(ChooseCode(4));
+            _goBoard.SetupCode(ChooseCode());
         }
     }
-    private int[] ChooseCode(int colorNumber)
+    public void StartGame()
     {
-        Material[] materials = new Material[colorNumber];
-        int[] materialsInd = new int[colorNumber];
-        for (int i = 0; i < colorNumber; i++)
+        Debug.Log("Coder ; Start");
+        _goBoard.SetupCode(ChooseCode());
+    }
+    private int[] ChooseCode()
+    {
+        
+        Material[] materials = new Material[_gameManager.CodeLength];
+        int[] materialsInd = new int[_gameManager.CodeLength];
+        for (int i = 0; i < _gameManager.CodeLength; i++)
         {
-            int colorChoose = Random.Range(0, colorNumber);
+            int colorChoose = Random.Range(0, _gameManager.CodeLength);
             materials[i] = _gameManager.Colors[colorChoose];
             materialsInd[i] = colorChoose;
         }

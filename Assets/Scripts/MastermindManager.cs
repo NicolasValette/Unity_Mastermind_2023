@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MastermindManager : MonoBehaviour
 {
-
+    #region Serialized attributes
     [SerializeField]
     private Material[] _pawnMaterials;
     [SerializeField]
@@ -14,7 +15,9 @@ public class MastermindManager : MonoBehaviour
 
     [SerializeField]
     private Material _mActivePawnColor;
+    #endregion
 
+    #region Getters And Setters
     [SerializeField]
     private int _codeLength;
     public int CodeLength 
@@ -37,22 +40,32 @@ public class MastermindManager : MonoBehaviour
             return _pawnMaterials;
         }
     }
-
+    public Material[] GetColors()
+    {
+        return _pawnMaterials;
+    }
+    #endregion
+    #region Events
+    public delegate void  StartEvent();
+    public static StartEvent OnStart;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
         //_mActivePawnColor.
     }
-    public Material[] GetColors ()
-    {
-        return _pawnMaterials;
-    }
+    
     // Update is called once per frame
     void Update()
     {
         
     }
 
+
+    public static void StartMasterMind()
+    {
+        OnStart?.Invoke();
+    }
     public void Win()
     {
 

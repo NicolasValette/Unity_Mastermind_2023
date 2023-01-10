@@ -6,7 +6,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    private Button check;
+    private Button _check;
+    [SerializeField]
+    private Button _start;
+    [SerializeField]
+    private Image _fadeScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +18,15 @@ public class UIManager : MonoBehaviour
     }
     public void OnEnable()
     {
-        check.onClick.AddListener(CheckButton);
+        _check.onClick.AddListener(CheckButton);
+        _start.onClick.AddListener(StartButton);
+        MastermindManager.OnStart += StartGame;
     }
     public void OnDisable()
     {
-        check.onClick.RemoveListener(CheckButton);
+        _check.onClick.RemoveListener(CheckButton);
+        _start.onClick.RemoveListener(StartButton);
+        MastermindManager.OnStart -= StartGame;
     }
 
     // Update is called once per frame
@@ -29,5 +37,16 @@ public class UIManager : MonoBehaviour
     public void CheckButton  ()
     {
         Debug.Log("bouton");
+    }
+    public void StartButton()
+    {
+        MastermindManager.StartMasterMind();
+    }
+    public void StartGame()
+    {
+        Debug.Log("UI : Start");
+        _start.gameObject.SetActive(false);
+        _check.gameObject.SetActive(true);
+        _fadeScreen.enabled = false;
     }
 }

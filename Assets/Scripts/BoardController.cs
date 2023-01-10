@@ -47,6 +47,15 @@ public class BoardController : MonoBehaviour
 
 
     }
+    private void OnEnable()
+    {
+        MastermindManager.OnStart += ActivateNextRow;
+    }
+    private void OnDisable()
+    {
+        MastermindManager.OnStart -= ActivateNextRow;
+    }
+
 
     private void PrepareBoard()
     {
@@ -68,6 +77,7 @@ public class BoardController : MonoBehaviour
     }
     public void ActivateNextRow()
     {
+        Debug.Log("Activate");
         if (_activeRow == -1)                           //The first row of the game
         {
             _rows[++_activeRow].SwitchActive();
