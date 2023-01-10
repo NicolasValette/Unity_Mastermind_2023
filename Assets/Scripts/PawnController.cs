@@ -13,6 +13,21 @@ public class PawnController : MonoBehaviour
 
     private MastermindManager _gameManager;
     private MeshRenderer _color;
+
+    private bool _isColored;
+    public bool IsColored
+    {
+        get { return _isColored; }
+        private set
+        {
+            if (!_isColored)
+            {
+                gameObject.transform.parent.gameObject.GetComponent<RowController>()?.IncrementColoredRow();
+            }
+            _isColored= value;
+            
+        }
+    }
     public Material Color
     {
         get
@@ -43,24 +58,26 @@ public class PawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void ChangeColor()
     {
         _actualIndColor = _actualIndColor >= _gameManager.Colors.Length - 1 ? 0 : _actualIndColor + 1;
         _color.material = _gameManager.Colors[_actualIndColor];
-        Debug.Log("Couleur = " + _gameManager.Colors[_actualIndColor].color.ToString());
-        Debug.Log("Couleur = " + _color.material.color.ToString());
+        
+        IsColored= true;
     }
     public void ChangeColor(Material color)
     {
         _color.material = color;
+        IsColored = true;
     }
     public void ChangeColor(int colorInd)
     {
         _actualIndColor = colorInd;
         _color.material = _gameManager.Colors[_actualIndColor];
+        IsColored = true;
     }
     public void setActive(bool activity)
     {

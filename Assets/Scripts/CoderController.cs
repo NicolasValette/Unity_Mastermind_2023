@@ -14,7 +14,7 @@ public class CoderController : MonoBehaviour
     private Button CheckButton;
 
     public delegate void AnswerEvent();
-    public static AnswerEvent OnAnswer;
+    public static event AnswerEvent OnAnswer;
     // Start is called before the first frame update
     void Start()
     {
@@ -84,7 +84,7 @@ public class CoderController : MonoBehaviour
         _goBoard.ActualRow.CorrectColors = nbGoodColors;
         _goBoard.ActualRow.UncorrectPos = nbBadPos;
         _goBoard.ActualRow.ChangeCluesColors(_gameManager.GoodColor, _gameManager.BadColor);
-        //OnAnswer?.Invoke();
+        OnAnswer?.Invoke();
     }
    
 }

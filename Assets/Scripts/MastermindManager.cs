@@ -47,7 +47,7 @@ public class MastermindManager : MonoBehaviour
     #endregion
     #region Events
     public delegate void  StartEvent();
-    public static StartEvent OnStart;
+    public static event StartEvent OnStart;
     #endregion
     // Start is called before the first frame update
     void Start()

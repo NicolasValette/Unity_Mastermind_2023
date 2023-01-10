@@ -21,12 +21,16 @@ public class UIManager : MonoBehaviour
         _check.onClick.AddListener(CheckButton);
         _start.onClick.AddListener(StartButton);
         MastermindManager.OnStart += StartGame;
+        RowController.OnValid += CheckButton;
+
     }
     public void OnDisable()
     {
         _check.onClick.RemoveListener(CheckButton);
         _start.onClick.RemoveListener(StartButton);
         MastermindManager.OnStart -= StartGame;
+        RowController.OnValid -= CheckButton;
+        CoderController.OnAnswer -= CheckButton;
     }
 
     // Update is called once per frame
@@ -34,10 +38,7 @@ public class UIManager : MonoBehaviour
     {
         
     }
-    public void CheckButton  ()
-    {
-        Debug.Log("bouton");
-    }
+   
     public void StartButton()
     {
         MastermindManager.StartMasterMind();
@@ -46,7 +47,12 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("UI : Start");
         _start.gameObject.SetActive(false);
-        _check.gameObject.SetActive(true);
         _fadeScreen.enabled = false;
     }
+    public void CheckButton()
+    {
+        Debug.Log("UI ; CheckButton");
+        _check.gameObject.SetActive(!_check.gameObject.activeSelf);
+    }
+
 }
