@@ -55,7 +55,7 @@ public class PawnController : MonoBehaviour
     }
     public void ChangeColor(Material color)
     {
-        //todo
+        _color.material = color;
     }
     public void ChangeColor(int colorInd)
     {

@@ -9,6 +9,11 @@ public class BoardController : MonoBehaviour
     private RowController[] _rows;
     [SerializeField]
     private PawnController[] _code;
+
+    private int _activeRow = -1;
+
+    public delegate void VerifyEvent();
+    public static VerifyEvent OnVerify;
     public Material[] Code
     {
         get
@@ -16,12 +21,13 @@ public class BoardController : MonoBehaviour
             Material[] materials = new Material[_code.Length];
             for (int i= 0;i< _code.Length; i++)
             {
-                //materials[i] = _code[i].
+                materials[i] = _code[i].Color;
             }
             return materials;
         }
     }
-    private int _activeRow = -1;
+    public RowController ActualRow { get { return _rows[_activeRow]; }  }
+    
 
 
 
@@ -42,7 +48,7 @@ public class BoardController : MonoBehaviour
 
     }
 
-    private void prepareBoard()
+    private void PrepareBoard()
     {
     }
     public void SetupCode(Material[] colors)
@@ -68,28 +74,31 @@ public class BoardController : MonoBehaviour
         }
         else
         {
-
             _rows[_activeRow++].SwitchActive();       // then, disable
-
             _rows[_activeRow].SwitchActive();         // and activate the next row
         }
     }
-    public bool VerifyRow (int rowToCheck)
+    public bool IsColorInCode(Material color)
     {
-
-        int nbGoodAnswers = 0;              // the value to return
-                                            /////////////////////////////////////////////////////////////////////////////////////////////////////////////// A TEST
-        for (int i = 0; i < _gameManager.CodeLength; i++)
+        for (int i = 0; i < _code.Length; i++) 
         {
-            if (_rows[rowToCheck].Pawns[i].color == _goBoard.Code[i].color)
-            {
-                nbGoodAnswers++;
-            }
+            if (true) { }
         }
-
-        return nbGoodAnswers;              // the value to return
-
-
-        return false;
+        return true;
     }
+    //public bool VerifyRow (int rowToCheck)
+    //{
+
+        //int nbGoodAnswers = 0;              // the value to return
+        //                                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////// A TEST
+        //for (int i = 0; i < _gameManager.CodeLength; i++)
+        //{
+        //    if (_rows[rowToCheck].Pawns[i].color == _goBoard.Code[i].color)
+        //    {
+        //        nbGoodAnswers++;
+        //    }
+        //}
+        //// return nbGoodAnswers;              // the value to return
+        //return true;
+    //}
 }

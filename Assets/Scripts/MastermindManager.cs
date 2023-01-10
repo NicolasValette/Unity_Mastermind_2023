@@ -6,26 +6,35 @@ public class MastermindManager : MonoBehaviour
 {
 
     [SerializeField]
-    private Material[] _materials;
+    private Material[] _pawnMaterials;
+    [SerializeField]
+    private Material _goodAnswerMaterials;
+    [SerializeField]
+    private Material _badAnswerMaterials;
 
     [SerializeField]
     private Material _mActivePawnColor;
 
     [SerializeField]
     private int _codeLength;
-    public int CodeLength { get; private set; }
+    public int CodeLength 
+    {
+        get { return _codeLength; }
+         
+    }
     
     public Material ActivePawnColor
     {
         get { return _mActivePawnColor; }
     }
-    
+    public Material GoodColor { get { return _goodAnswerMaterials; } }
+    public Material BadColor { get { return _badAnswerMaterials; } }
     
     public Material [] Colors
     {
         get
         {
-            return _materials;
+            return _pawnMaterials;
         }
     }
 
@@ -36,7 +45,7 @@ public class MastermindManager : MonoBehaviour
     }
     public Material[] GetColors ()
     {
-        return _materials;
+        return _pawnMaterials;
     }
     // Update is called once per frame
     void Update()

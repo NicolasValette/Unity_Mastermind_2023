@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1597670419074040615}
   - component: {fileID: 3895094835322700581}
   - component: {fileID: 8035172178169580458}
+  - component: {fileID: 3873376454685032230}
   m_Layer: 0
   m_Name: Clue (1)
   m_TagString: Untagged
@@ -98,6 +99,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &3873376454685032230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2639083603492053082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf4ae5e5598fbc4ebc3cebfbb4194cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
 --- !u!1 &3611573175713799079
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +124,7 @@ GameObject:
   - component: {fileID: 3289159823205227102}
   - component: {fileID: 8958272470325198716}
   - component: {fileID: 5498008180209818162}
+  - component: {fileID: 7628086087072645171}
   m_Layer: 0
   m_Name: Clue (3)
   m_TagString: Untagged
@@ -196,6 +211,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &7628086087072645171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611573175713799079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf4ae5e5598fbc4ebc3cebfbb4194cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
 --- !u!1 &6588703495451537864
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +236,7 @@ GameObject:
   - component: {fileID: 4685794042382990339}
   - component: {fileID: 6441092877106293206}
   - component: {fileID: 1297878591935142612}
+  - component: {fileID: 2796199811329839553}
   m_Layer: 0
   m_Name: Clue (2)
   m_TagString: Untagged
@@ -294,7 +323,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!1 &6629461725412747697
+--- !u!114 &2796199811329839553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6588703495451537864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf4ae5e5598fbc4ebc3cebfbb4194cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
+--- !u!1 &6643364912749729670
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,47 +344,83 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3509336759033451822}
-  - component: {fileID: 4544817599979033141}
-  - component: {fileID: 4248673289227346445}
-  - component: {fileID: 3986821187315369050}
+  - component: {fileID: 478999380446876924}
   m_Layer: 0
-  m_Name: Clue
+  m_Name: Clues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3509336759033451822
+--- !u!4 &478999380446876924
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629461725412747697}
+  m_GameObject: {fileID: 6643364912749729670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1063, y: 0.0248, z: 0.1386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5093778859642140836}
+  - {fileID: 1852458029290379899}
+  - {fileID: 5363553840236499504}
+  - {fileID: 2245768072896699746}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7773327623460506692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5093778859642140836}
+  - component: {fileID: 7896967830049432060}
+  - component: {fileID: 854632434890232428}
+  - component: {fileID: 4016243800882413631}
+  - component: {fileID: 7518790676997595723}
+  m_Layer: 0
+  m_Name: Clue (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5093778859642140836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773327623460506692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.033699997, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0328, y: 0, z: 0}
   m_LocalScale: {x: 0.005, y: 0.015, z: 0.005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 478999380446876924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4544817599979033141
+--- !u!33 &7896967830049432060
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629461725412747697}
+  m_GameObject: {fileID: 7773327623460506692}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4248673289227346445
+--- !u!23 &854632434890232428
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629461725412747697}
+  m_GameObject: {fileID: 7773327623460506692}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -378,13 +456,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3986821187315369050
+--- !u!136 &4016243800882413631
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629461725412747697}
+  m_GameObject: {fileID: 7773327623460506692}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -392,38 +470,16 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!1 &6643364912749729670
-GameObject:
+--- !u!114 &7518790676997595723
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 478999380446876924}
-  m_Layer: 0
-  m_Name: Clues
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &478999380446876924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643364912749729670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1063, y: 0.0248, z: 0.1386}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3509336759033451822}
-  - {fileID: 1852458029290379899}
-  - {fileID: 5363553840236499504}
-  - {fileID: 2245768072896699746}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 7773327623460506692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf4ae5e5598fbc4ebc3cebfbb4194cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
