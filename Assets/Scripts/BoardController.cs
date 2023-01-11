@@ -9,6 +9,9 @@ public class BoardController : MonoBehaviour
     private RowController[] _rows;
     [SerializeField]
     private PawnController[] _code;
+    [SerializeField]
+    private MastermindManager _gameManager;
+
 
     private int _activeRow = -1;
 
@@ -19,15 +22,15 @@ public class BoardController : MonoBehaviour
         get
         {
             Material[] materials = new Material[_code.Length];
-            for (int i= 0;i< _code.Length; i++)
+            for (int i = 0; i < _code.Length; i++)
             {
                 materials[i] = _code[i].Color;
             }
             return materials;
         }
     }
-    public RowController ActualRow { get { return _rows[_activeRow]; }  }
-    
+    public RowController ActualRow { get { return _rows[_activeRow]; } }
+
 
 
 
@@ -64,10 +67,10 @@ public class BoardController : MonoBehaviour
     }
     public void SetupCode(Material[] colors)
     {
-        
+
         for (int i = 0; i < colors.Length; i++)
         {
-            
+
         }
     }
     public void SetupCode(int[] colors)
@@ -79,20 +82,29 @@ public class BoardController : MonoBehaviour
     }
     public void ActivateNextRow()
     {
-        Debug.Log("Activate");
-        if (_activeRow == -1)                           //The first row of the game
+        Debug.Log("Activate = " + _activeRow);
+        if (_activeRow >= _gameManager.Try -1)                 
         {
-            _rows[++_activeRow].SwitchActive();
+            _gameManager.Loose();
         }
         else
         {
-            _rows[_activeRow++].SwitchActive();       // then, disable
-            _rows[_activeRow].SwitchActive();         // and activate the next row
+            if (_activeRow == -1)                           //The first row of the game
+            {
+                _activeRow++;
+                _rows[_activeRow].SwitchActive();
+            }
+            else
+            {
+                _rows[_activeRow].SwitchActive();       // then, disable
+                _activeRow++;
+                _rows[_activeRow].SwitchActive();         // and activate the next row
+            }
         }
     }
     public bool IsColorInCode(Material color)
     {
-        for (int i = 0; i < _code.Length; i++) 
+        for (int i = 0; i < _code.Length; i++)
         {
             if (true) { }
         }
@@ -101,16 +113,16 @@ public class BoardController : MonoBehaviour
     //public bool VerifyRow (int rowToCheck)
     //{
 
-        //int nbGoodAnswers = 0;              // the value to return
-        //                                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////// A TEST
-        //for (int i = 0; i < _gameManager.CodeLength; i++)
-        //{
-        //    if (_rows[rowToCheck].Pawns[i].color == _goBoard.Code[i].color)
-        //    {
-        //        nbGoodAnswers++;
-        //    }
-        //}
-        //// return nbGoodAnswers;              // the value to return
-        //return true;
+    //int nbGoodAnswers = 0;              // the value to return
+    //                                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////// A TEST
+    //for (int i = 0; i < _gameManager.CodeLength; i++)
+    //{
+    //    if (_rows[rowToCheck].Pawns[i].color == _goBoard.Code[i].color)
+    //    {
+    //        nbGoodAnswers++;
+    //    }
+    //}
+    //// return nbGoodAnswers;              // the value to return
+    //return true;
     //}
 }

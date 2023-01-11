@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,11 @@ public class UIManager : MonoBehaviour
     private Button _start;
     [SerializeField]
     private Image _fadeScreen;
+    [SerializeField]
+    private TMP_Text _gameOver;
+
+    private bool _isGameOver = false;
+    private float _fadeProgress = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,7 @@ public class UIManager : MonoBehaviour
         MastermindManager.OnStart += StartGame;
         RowController.OnValid += CheckButton;
         CoderController.OnAnswer += CheckButton;
+        MastermindManager.onGameOver += GameOver;
 
     }
     public void OnDisable()
@@ -32,12 +39,19 @@ public class UIManager : MonoBehaviour
         MastermindManager.OnStart -= StartGame;
         RowController.OnValid -= CheckButton;
         CoderController.OnAnswer -= CheckButton;
+        MastermindManager.onGameOver -= GameOver;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (_isGameOver)
+        {
+            _fadeProgress += Time.deltaTime;
+            Color color = _fadeScreen.color;
+            color.a = Mathf.Lerp(0f, 1f, _fadeProgress);
+            _fadeScreen.color = color;
+        }
     }
    
     public void StartButton()
@@ -55,5 +69,11 @@ public class UIManager : MonoBehaviour
         Debug.Log("UI ; CheckButton");
         _check.gameObject.SetActive(!_check.gameObject.activeSelf);
     }
-
+    public void GameOver()
+    {
+        Debug.Log("Perdu");
+        _fadeScreen.enabled = true;
+        _isGameOver= true;
+        _gameOver.gameObject.SetActive(true);
+    }
 }

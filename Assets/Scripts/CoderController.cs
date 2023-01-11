@@ -72,19 +72,18 @@ public class CoderController : MonoBehaviour
                 nbGoodColors++;
                 boolTab[i] = true;
             }
-            for (int j = 0; j < _gameManager.CodeLength; j++)
-            {
-                if (!boolTab[j] && _goBoard.ActualRow.Pawns[j].Color.color == _goBoard.Code[i].color)
-                {
-                    boolTab[i] = true;
-                    nbBadPos++;
-                }
-            }
+            //for (int j = 0; j < _gameManager.CodeLength; j++)
+            //{
+            //    if (!boolTab[j] && _goBoard.ActualRow.Pawns[j].Color.color == _goBoard.Code[i].color)
+            //    {
+            //        boolTab[i] = true;
+            //        nbBadPos++;
+            //    }
+            //}
         }
         _goBoard.ActualRow.CorrectColors = nbGoodColors;
         _goBoard.ActualRow.UncorrectPos = nbBadPos;
         _goBoard.ActualRow.ChangeCluesColors(_gameManager.GoodColor, _gameManager.BadColor);
         OnAnswer?.Invoke();
     }
-   
 }

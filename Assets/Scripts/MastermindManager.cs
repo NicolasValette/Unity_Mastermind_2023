@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,6 +13,8 @@ public class MastermindManager : MonoBehaviour
     private Material _goodAnswerMaterials;
     [SerializeField]
     private Material _badAnswerMaterials;
+    [SerializeField]
+    private int _numberTry;
 
     [SerializeField]
     private Material _mActivePawnColor;
@@ -32,7 +35,9 @@ public class MastermindManager : MonoBehaviour
     }
     public Material GoodColor { get { return _goodAnswerMaterials; } }
     public Material BadColor { get { return _badAnswerMaterials; } }
-    
+ 
+    public int Try { get { return _numberTry; } }
+
     public Material [] Colors
     {
         get
@@ -48,6 +53,8 @@ public class MastermindManager : MonoBehaviour
     #region Events
     public delegate void  StartEvent();
     public static event StartEvent OnStart;
+    public delegate void GameOverEvent();
+    public static event GameOverEvent onGameOver;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -68,11 +75,11 @@ public class MastermindManager : MonoBehaviour
     }
     public void Win()
     {
-
+        
     }
 
     public void Loose()
     {
-
+        onGameOver?.Invoke();
     }
 }
