@@ -51,7 +51,7 @@ public class RowController : MonoBehaviour
         {
             Clues[i].ChangeColor(goodColor);
         }
-        for (; i < UncorrectPos; i++)
+        for (; i < UncorrectPos + CorrectColors; i++)
         {
             Clues[i].ChangeColor(badColor);
         }

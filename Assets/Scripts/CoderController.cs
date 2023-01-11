@@ -68,7 +68,7 @@ public class CoderController : MonoBehaviour
         bool[] boolTab = new bool[_gameManager.CodeLength];
         int nbGoodColors = 0;
         int nbBadPos = 0;
-        for (int i = 0; i < _gameManager.CodeLength; i++)
+        for (int i = 0; i < _gameManager.CodeLength; i++)                               //Verification of good colors & positions
         {
             if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[i].color)
             {
@@ -76,14 +76,6 @@ public class CoderController : MonoBehaviour
                 boolTab[i] = true;
 
             }
-            //for (int j = 0; j < _gameManager.CodeLength; j++)
-            //{
-            //    if (!boolTab[j] && _goBoard.ActualRow.Pawns[j].Color.color == _goBoard.Code[i].color)
-            //    {
-            //        boolTab[i] = true;
-            //        nbBadPos++;
-            //    }
-            //}
         }
         if (nbGoodColors >= _gameManager.CodeLength)
         {
@@ -91,6 +83,24 @@ public class CoderController : MonoBehaviour
         }
         else
         {
+            for (int i = 0; i<_gameManager.CodeLength; i++)
+            {
+                if (!boolTab[i])
+                {
+                    for (int j = 0; j < _gameManager.CodeLength; j++)
+                    {
+                        if (!boolTab[j])
+                        {
+                            if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[j].color)
+                            {
+                                nbBadPos++;
+                                boolTab[j] = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
             _goBoard.ActualRow.CorrectColors = nbGoodColors;
             _goBoard.ActualRow.UncorrectPos = nbBadPos;
             _goBoard.ActualRow.ChangeCluesColors(_gameManager.GoodColor, _gameManager.BadColor);
