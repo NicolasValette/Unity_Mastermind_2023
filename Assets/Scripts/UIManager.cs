@@ -13,9 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Image _fadeScreen;
     [SerializeField]
-    private TMP_Text _gameOver;
+    private TMP_Text _gameOverText;
+    [SerializeField]
+    private TMP_Text _gameWinText;
 
-    private bool _isGameOver = false;
+    private bool _isGameEnd = false;
     private float _fadeProgress = 0f;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,8 @@ public class UIManager : MonoBehaviour
         MastermindManager.OnStart += StartGame;
         RowController.OnValid += CheckButton;
         CoderController.OnAnswer += CheckButton;
-        MastermindManager.onGameOver += GameOver;
+        MastermindManager.OnGameOver += GameOver;
+        MastermindManager.OnGameWin += GameWin;
 
     }
     public void OnDisable()
@@ -39,13 +42,14 @@ public class UIManager : MonoBehaviour
         MastermindManager.OnStart -= StartGame;
         RowController.OnValid -= CheckButton;
         CoderController.OnAnswer -= CheckButton;
-        MastermindManager.onGameOver -= GameOver;
+        MastermindManager.OnGameOver -= GameOver;
+        MastermindManager.OnGameWin += GameWin;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isGameOver)
+        if (_isGameEnd)
         {
             _fadeProgress += Time.deltaTime;
             Color color = _fadeScreen.color;
@@ -73,7 +77,15 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Perdu");
         _fadeScreen.enabled = true;
-        _isGameOver= true;
-        _gameOver.gameObject.SetActive(true);
+        _isGameEnd= true;
+        _gameOverText.gameObject.SetActive(true);
+    }
+    public void GameWin()
+    {
+        Debug.Log("Perdu");
+        _fadeScreen.enabled = true;
+        _isGameEnd = true;
+        _gameWinText.gameObject.SetActive(true);
+
     }
 }

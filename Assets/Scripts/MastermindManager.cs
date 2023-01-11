@@ -53,8 +53,15 @@ public class MastermindManager : MonoBehaviour
     #region Events
     public delegate void  StartEvent();
     public static event StartEvent OnStart;
+
     public delegate void GameOverEvent();
-    public static event GameOverEvent onGameOver;
+    public static event GameOverEvent OnGameOver;
+
+    public delegate void GameWinEvent();
+    public static event GameWinEvent OnGameWin;
+
+    public bool IsGameEnd { get; private set; } = false;
+
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -75,11 +82,14 @@ public class MastermindManager : MonoBehaviour
     }
     public void Win()
     {
-        
+        IsGameEnd = true;
+        OnGameWin?.Invoke();
     }
 
     public void Loose()
     {
-        onGameOver?.Invoke();
+        IsGameEnd= true;
+        OnGameOver?.Invoke();
     }
+  
 }

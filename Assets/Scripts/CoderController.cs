@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class CoderController : MonoBehaviour
 {
-
+    #region Serialized Attributes
     [SerializeField]
     private BoardController _goBoard;
     [SerializeField]
     private MastermindManager _gameManager;
     [SerializeField]
     private Button CheckButton;
+    #endregion
 
+    #region Events
     public delegate void AnswerEvent();
     public static event AnswerEvent OnAnswer;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     public void OnEnable()
     {
@@ -48,7 +51,7 @@ public class CoderController : MonoBehaviour
     }
     private int[] ChooseCode()
     {
-        
+
         Material[] materials = new Material[_gameManager.CodeLength];
         int[] materialsInd = new int[_gameManager.CodeLength];
         for (int i = 0; i < _gameManager.CodeLength; i++)
@@ -71,6 +74,7 @@ public class CoderController : MonoBehaviour
             {
                 nbGoodColors++;
                 boolTab[i] = true;
+
             }
             //for (int j = 0; j < _gameManager.CodeLength; j++)
             //{
@@ -81,9 +85,16 @@ public class CoderController : MonoBehaviour
             //    }
             //}
         }
-        _goBoard.ActualRow.CorrectColors = nbGoodColors;
-        _goBoard.ActualRow.UncorrectPos = nbBadPos;
-        _goBoard.ActualRow.ChangeCluesColors(_gameManager.GoodColor, _gameManager.BadColor);
-        OnAnswer?.Invoke();
+        if (nbGoodColors >= _gameManager.CodeLength)
+        {
+            _gameManager.Win();
+        }
+        else
+        {
+            _goBoard.ActualRow.CorrectColors = nbGoodColors;
+            _goBoard.ActualRow.UncorrectPos = nbBadPos;
+            _goBoard.ActualRow.ChangeCluesColors(_gameManager.GoodColor, _gameManager.BadColor);
+            OnAnswer?.Invoke();
+        }
     }
 }

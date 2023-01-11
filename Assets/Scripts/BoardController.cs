@@ -82,23 +82,26 @@ public class BoardController : MonoBehaviour
     }
     public void ActivateNextRow()
     {
-        Debug.Log("Activate = " + _activeRow);
-        if (_activeRow >= _gameManager.Try -1)                 
+        if (!_gameManager.IsGameEnd)
         {
-            _gameManager.Loose();
-        }
-        else
-        {
-            if (_activeRow == -1)                           //The first row of the game
+            Debug.Log("Activate = " + _activeRow);
+            if (_activeRow >= _gameManager.Try - 1)
             {
-                _activeRow++;
-                _rows[_activeRow].SwitchActive();
+                _gameManager.Loose();
             }
             else
             {
-                _rows[_activeRow].SwitchActive();       // then, disable
-                _activeRow++;
-                _rows[_activeRow].SwitchActive();         // and activate the next row
+                if (_activeRow == -1)                           //The first row of the game
+                {
+                    _activeRow++;
+                    _rows[_activeRow].SwitchActive();
+                }
+                else
+                {
+                    _rows[_activeRow].SwitchActive();       // then, disable
+                    _activeRow++;
+                    _rows[_activeRow].SwitchActive();         // and activate the next row
+                }
             }
         }
     }
