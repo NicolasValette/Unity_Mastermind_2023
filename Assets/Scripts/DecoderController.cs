@@ -5,25 +5,57 @@ using UnityEngine;
 
 public class DecoderController : MonoBehaviour
 {
+
+    private GameObject PawnToMove = null;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(rayToMouse.origin, rayToMouse.direction * 20f, Color.red);
-        RaycastHit hit;
-        if (Physics.Raycast(rayToMouse, out hit))
+        //drag & drop
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (hit.transform.gameObject.GetComponent<PawnController>() != null && Input.GetMouseButtonDown(0))
+            Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(rayToMouse, out hit) )
             {
-                hit.transform.gameObject.GetComponent<PawnController>().ChangeColor();
+                Debug.Log("Raycast");
+                if (PawnToMove == null)
+                {
+                    PawnToMove = hit.transform.gameObject.GetComponent<PawnController>()?.Pick(hit);
+                }
             }
         }
+
+
+
+        //Change color on click
+        //Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //Debug.DrawRay(rayToMouse.origin, rayToMouse.direction * 20f, Color.red);
+        //RaycastHit hit;
+        //if (Physics.Raycast(rayToMouse, out hit))
+        //{
+        //    if (hit.transform.gameObject.GetComponent<PawnController>() != null && Input.GetMouseButtonDown(0))
+        //    {
+        //        hit.transform.gameObject.GetComponent<PawnController>().ChangeColor();
+        //    }
+        //}
+    }
+
+    public bool SelectPawnToPlace(RaycastHit hit)
+    {
+        if (hit.transform.gameObject.GetComponent<PawnController>() != null && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Click");
+            Cursor.visible = false;
+            PawnToMove = Instantiate(hit.transform.gameObject, Input.mousePosition, Quaternion.identity);
+            return true;
+        }
+        return false;
     }
 }

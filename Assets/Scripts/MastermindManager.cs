@@ -66,6 +66,7 @@ public class MastermindManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //UnityEngine.Cursor.visible= false;
         //_mActivePawnColor.
     }
     

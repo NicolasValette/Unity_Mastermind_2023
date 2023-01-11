@@ -6,14 +6,16 @@ using UnityEngine;
 
 public class PawnController : MonoBehaviour
 {
+    #region Serialized attributes
     //[SerializeField]
     //private Material[] _materials;           //List of all possible colors
     [SerializeField]
     private GameObject _MastermindManager;
-
-    private MastermindManager _gameManager;
-    private MeshRenderer _color;
-
+    [SerializeField]
+    private bool _isPickable = false;
+    #endregion
+ 
+    #region getters and setters
     private bool _isColored;
     public bool IsColored
     {
@@ -35,10 +37,6 @@ public class PawnController : MonoBehaviour
             return _color.material;
         }
     }
-
-    private Collider _collider;
-    private int _actualIndColor = 0;       //Indice of the actual color
-
     public bool IsActive
     {
         get
@@ -46,19 +44,32 @@ public class PawnController : MonoBehaviour
             return _collider.enabled;
         }
     }
+    #endregion
+
+    #region Unity components
+    private Collider _collider;  
+    private MastermindManager _gameManager;
+    private MeshRenderer _color;
+    #endregion
+
+    private IPawnState state;
+    private int _actualIndColor = 0;       //Indice of the actual color
     // Start is called before the first frame update
     void Start()
     {
         _color = GetComponent<MeshRenderer>();
         _collider = GetComponent<Collider>();
-        _collider.enabled = false;
+        if (!_isPickable)
+        {
+            _collider.enabled = false;
+        }
         _gameManager = _MastermindManager.GetComponent<MastermindManager>();
+        state = new NoDraggablePawnState();
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        Move();
     }
 
     public void ChangeColor()
@@ -87,5 +98,27 @@ public class PawnController : MonoBehaviour
             _color.material = _gameManager.ActivePawnColor;
         }
     }
+    public void SwitchState()
+    {
+        if (state is DraggablePawnState)
+        {
+            state = new NoDraggablePawnState();
+        }
+        else
+        {
+            state = new DraggablePawnState();
+        }
+        Debug.Log("New State : " + state.ToString());
+    }
+    public GameObject Pick(RaycastHit hit)
+    {
+        SwitchState();
+        Cursor.visible = false;
+        return Instantiate(hit.transform.gameObject, Input.mousePosition, Quaternion.identity);
+    }
 
+    public void Move()
+    {
+        state.Move(transform);
+    }
 }

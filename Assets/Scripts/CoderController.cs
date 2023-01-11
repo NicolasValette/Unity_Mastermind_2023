@@ -26,13 +26,13 @@ public class CoderController : MonoBehaviour
     public void OnEnable()
     {
         //BoardController.OnVerify += checkCode;//
-        CheckButton.onClick.AddListener(checkCode);
+        CheckButton.onClick.AddListener(CheckCode);
         MastermindManager.OnStart += StartGame;
     }
     public void OnDisable()
     {
         //BoardController.OnVerify -= checkCode;
-        CheckButton.onClick.RemoveListener(checkCode);
+        CheckButton.onClick.RemoveListener(CheckCode);
         MastermindManager.OnStart -= StartGame;
     }
     // Update is called once per frame
@@ -60,12 +60,26 @@ public class CoderController : MonoBehaviour
             materials[i] = _gameManager.Colors[colorChoose];
             materialsInd[i] = colorChoose;
         }
+
         return materialsInd;
     }
-    public void checkCode()
+    private int[] triche()
+    {
+        Material[] materials = new Material[_gameManager.CodeLength];
+        int[] materialsInd = new int[_gameManager.CodeLength];
+        for (int i = 0; i < 4; i++)
+        {
+
+            materials[i] = _gameManager.Colors[i];
+            materialsInd[i] = i;
+        }
+        return materialsInd;
+    }
+    public void CheckCode()
     {
         Debug.Log("Verification de ligne");
-        bool[] boolTab = new bool[_gameManager.CodeLength];
+        bool[] goodColors = new bool[_gameManager.CodeLength];
+        bool[] WrongPlacement = new bool[_gameManager.CodeLength];
         int nbGoodColors = 0;
         int nbBadPos = 0;
         for (int i = 0; i < _gameManager.CodeLength; i++)                               //Verification of good colors & positions
@@ -73,7 +87,7 @@ public class CoderController : MonoBehaviour
             if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[i].color)
             {
                 nbGoodColors++;
-                boolTab[i] = true;
+                goodColors[i] = true;
 
             }
         }
@@ -83,20 +97,18 @@ public class CoderController : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i<_gameManager.CodeLength; i++)
+            for (int i = 0; i < _gameManager.CodeLength; i++)
             {
-                if (!boolTab[i])
+                if (!goodColors[i])
                 {
+
                     for (int j = 0; j < _gameManager.CodeLength; j++)
                     {
-                        if (!boolTab[j])
+                        if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[j].color && !WrongPlacement[j] && !goodColors[i])
                         {
-                            if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[j].color)
-                            {
-                                nbBadPos++;
-                                boolTab[j] = true;
-                                break;
-                            }
+                            nbBadPos++;
+                            WrongPlacement[j] = true;
+                            break;
                         }
                     }
                 }
