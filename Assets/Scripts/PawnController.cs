@@ -55,6 +55,7 @@ public class PawnController : MonoBehaviour
             return _state.ToString();
         }
     }
+    public bool IsPickable {  get {  return _isPickable; } }
     public int PositionInd { get; set; }
     #endregion
 
@@ -145,10 +146,18 @@ public class PawnController : MonoBehaviour
     }
     public GameObject Pick(RaycastHit hit)
     {
+       
         Cursor.visible = false;
         GameObject newPawn = Instantiate(hit.transform.gameObject, Input.mousePosition, Quaternion.identity);
+       
         newPawn.GetComponent<PawnController>().Initialisation(_gameManager);
         newPawn.GetComponent<PawnController>().SwitchState();
+        if (hit.transform.gameObject.GetComponent<PawnController>().IsSlot )
+        {
+            hit.transform.parent.GetComponent<RowController>().ReactivateSlot(hit.transform.GetComponent<PawnController>().PositionInd);
+         
+            Destroy(hit.transform.gameObject);
+        }
         Debug.Log($"new Pawn instanciate name : {newPawn.name}, state : {newPawn.GetComponent<PawnController>().State}");
         
         //newPawn.GetComponent<PawnController>()._collider.enabled = false;

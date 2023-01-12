@@ -56,6 +56,10 @@ public class UIManager : MonoBehaviour
             color.a = Mathf.Lerp(0f, 1f, _fadeProgress);
             _fadeScreen.color = color;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
    
     public void StartButton()

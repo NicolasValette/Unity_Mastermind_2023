@@ -28,7 +28,7 @@ public class DecoderController : MonoBehaviour
                 if (PawnToMove == null)
                 {
                     PawnController pawnCont = hit.transform.gameObject.GetComponent<PawnController>();
-                    if (pawnCont != null)
+                    if (pawnCont != null && pawnCont.IsPickable)
                     {
                         PawnToMove = pawnCont.Pick(hit);
                         if (pawnCont.IsSlot)

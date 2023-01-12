@@ -174,8 +174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 275, y: 600}
+  m_AnchoredPosition: {x: 0, y: -200}
+  m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174618800
 MonoBehaviour:
@@ -197,14 +197,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'How to play :
+  m_text: 'Drag & drop balls
 
-    ''S'' to start a game and generate a code to guess
+    Try to guess the code !
 
-    ''A''
-    to activate a row
-
-    Check button to verify'
+    Good Luck !!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -540,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375831909}
   m_LocalRotation: {x: 0.0019128993, y: -0.7071042, z: -0.7071042, w: -0.0019128993}
-  m_LocalPosition: {x: 0.7966, y: 0.004, z: 0.0792}
+  m_LocalPosition: {x: 0.796, y: 0.0051, z: 0.0029}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1223,6 +1220,7 @@ MonoBehaviour:
   _goodAnswerMaterials: {fileID: 2100000, guid: fa21f003423487c4da3c0b923135dcbb, type: 2}
   _badAnswerMaterials: {fileID: 2100000, guid: 2e5a5d0c8622f3044ba0d1a5335dad09, type: 2}
   _numberTry: 12
+  PawnPrefab: {fileID: 1738089265991622364, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
   _mActivePawnColor: {fileID: 2100000, guid: ce286377877f0084c8943fadcfbba1e3, type: 2}
   _codeLength: 4
 --- !u!4 &879151522
@@ -3173,7 +3171,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Over !
+  m_text: 'Game Over !
+
+    Escape to quit !'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3692,7 +3692,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU WIN !!!
+  m_text: 'YOU WIN !!!
+
+    Escape to quit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4126,7 +4128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2079569812
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4143,10 +4145,10 @@ RectTransform:
   m_Father: {fileID: 216772022}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 42.4}
-  m_SizeDelta: {x: 300, y: 750}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 200, y: -200}
+  m_SizeDelta: {x: 350, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079569813
 MonoBehaviour:

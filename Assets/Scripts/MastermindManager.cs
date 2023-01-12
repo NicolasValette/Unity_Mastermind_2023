@@ -15,6 +15,8 @@ public class MastermindManager : MonoBehaviour
     private Material _badAnswerMaterials;
     [SerializeField]
     private int _numberTry;
+    [SerializeField]
+    public GameObject PawnPrefab;
 
     [SerializeField]
     private Material _mActivePawnColor;
@@ -23,6 +25,7 @@ public class MastermindManager : MonoBehaviour
     #region Getters And Setters
     [SerializeField]
     private int _codeLength;
+
     public int CodeLength 
     {
         get { return _codeLength; }

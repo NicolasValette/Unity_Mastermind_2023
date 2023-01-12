@@ -12,8 +12,7 @@ public class CoderController : MonoBehaviour
     private MastermindManager _gameManager;
     [SerializeField]
     private Button CheckButton;
-    [SerializeField]
-    private GameObject PawnPrefab;
+
     #endregion
 
     #region Events
@@ -98,14 +97,14 @@ public class CoderController : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < _gameManager.CodeLength; i++)
+            for (int i = 0; i < _gameManager.CodeLength; i++) // on parcourt le code du joueur
             {
                 if (!goodColors[i])
                 {
 
-                    for (int j = 0; j < _gameManager.CodeLength; j++)
+                    for (int j = 0; j < _gameManager.CodeLength; j++) //on parcours le code a deviner
                     {
-                        if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[j].color && !WrongPlacement[i] && !goodColors[j])
+                        if (_goBoard.ActualRow.Pawns[i].Color.color == _goBoard.Code[j].color && !WrongPlacement[j] && !goodColors[j])
                         {
                             nbBadPos++;
                             WrongPlacement[j] = true;

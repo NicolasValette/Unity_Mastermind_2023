@@ -12,7 +12,6 @@ public class BoardController : MonoBehaviour
     [SerializeField]
     private MastermindManager _gameManager;
 
-
     private int _activeRow = -1;
 
     public delegate void VerifyEvent();
@@ -30,8 +29,6 @@ public class BoardController : MonoBehaviour
         }
     }
     public RowController ActualRow { get { return _rows[_activeRow]; } }
-
-
 
 
     // Start is called before the first frame update
