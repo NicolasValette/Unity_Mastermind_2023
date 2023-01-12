@@ -18,6 +18,7 @@ public class PawnController : MonoBehaviour
     #endregion
 
     #region getters and setters
+    public bool IsSlot { get { return _isPawnSlot; } }
     private bool _isColored;
     public bool IsColored
     {
@@ -149,6 +150,7 @@ public class PawnController : MonoBehaviour
         newPawn.GetComponent<PawnController>().Initialisation(_gameManager);
         newPawn.GetComponent<PawnController>().SwitchState();
         Debug.Log($"new Pawn instanciate name : {newPawn.name}, state : {newPawn.GetComponent<PawnController>().State}");
+        
         //newPawn.GetComponent<PawnController>()._collider.enabled = false;
         newPawn.layer = LayerMask.NameToLayer("Ignore Raycast");
         return newPawn;
@@ -166,6 +168,7 @@ public class PawnController : MonoBehaviour
                 hit.transform.parent.GetComponent<RowController>()?.ChangePawn(hit.transform.gameObject.GetComponent<PawnController>().PositionInd, transform.gameObject);
                 _state.Release(transform, hit.transform.position);
                 gameObject.layer = 0;
+                _isPawnSlot = true;
             }
             else
             {

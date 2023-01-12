@@ -72,11 +72,12 @@ public class RowController : MonoBehaviour
             OnValid?.Invoke();
         }
     }
-    public void ChangePawn(int place, GameObject Pawn)
+    public void ChangePawn(int place, GameObject pawn)
     {
         _coloredPawn[place] = true;
-        Pawn.transform.SetParent(transform);
-        Pawns[place] = Pawn.GetComponent<PawnController>();
+        pawn.transform.SetParent(transform);
+        Pawns[place] = pawn.GetComponent<PawnController>();
+        pawn.GetComponent<PawnController>().PositionInd= place;
         int nbColored = 0;
         for (int i=0; i < _gameManager.CodeLength; i++)
         {
@@ -85,7 +86,7 @@ public class RowController : MonoBehaviour
                 nbColored++;
             }
         }
-        if (nbColored >= _gameManager.CodeLength)
+        if (nbColored >= _gameManager.CodeLength && !isValid)
         {
             isValid= true;
             OnValid?.Invoke();

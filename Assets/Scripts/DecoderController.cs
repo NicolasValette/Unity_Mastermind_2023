@@ -27,7 +27,15 @@ public class DecoderController : MonoBehaviour
                 Debug.Log("Raycast");
                 if (PawnToMove == null)
                 {
-                    PawnToMove = hit.transform.gameObject.GetComponent<PawnController>()?.Pick(hit);
+                    PawnController pawnCont = hit.transform.gameObject.GetComponent<PawnController>();
+                    if (pawnCont != null)
+                    {
+                        PawnToMove = pawnCont.Pick(hit);
+                        if (pawnCont.IsSlot)
+                        {
+                            Destroy(hit.transform.gameObject);
+                        }
+                    }
                 }
             }
         }

@@ -110,4 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf4ae5e5598fbc4ebc3cebfbb4194cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
+  _mastermindManager: {fileID: 0}
+  _isPickable: 0
+  _isPawnSlot: 0
+  stateDrag: 0
