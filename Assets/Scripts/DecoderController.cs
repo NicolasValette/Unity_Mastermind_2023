@@ -22,7 +22,7 @@ public class DecoderController : MonoBehaviour
         {
             Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(rayToMouse, out hit) )
+            if (Physics.Raycast(rayToMouse, out hit))
             {
                 Debug.Log("Raycast");
                 if (PawnToMove == null)
@@ -30,6 +30,22 @@ public class DecoderController : MonoBehaviour
                     PawnToMove = hit.transform.gameObject.GetComponent<PawnController>()?.Pick(hit);
                 }
             }
+        }
+        else if (Input.GetMouseButtonUp(0) && PawnToMove != null)
+        {
+            Debug.Log("ButtonUp");
+            //Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //RaycastHit hit;
+            //if (Physics.Raycast(rayToMouse, out hit))
+            //{
+            //    Debug.Log("Drop");
+            //    if (PawnToMove != null)
+            //    {
+            //        PawnToMove.GetComponent<PawnController>().Drop();
+            //    }
+            //}
+
+            PawnToMove.GetComponent<PawnController>().Drop();
         }
 
 
@@ -49,6 +65,7 @@ public class DecoderController : MonoBehaviour
 
     public bool SelectPawnToPlace(RaycastHit hit)
     {
+       
         if (hit.transform.gameObject.GetComponent<PawnController>() != null && Input.GetMouseButtonDown(0))
         {
             Debug.Log("Click");

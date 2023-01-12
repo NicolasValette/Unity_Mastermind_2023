@@ -1,11 +1,11 @@
 ﻿
 using UnityEngine;
 
-public class NoDraggablePawnState : IPawnState
+class ReturnToPositionPawnState : IPawnState
 {
     public void Move(Transform transform)
     {
-        //do nothing
+        throw new System.NotImplementedException();
     }
 
     public void Release(Transform transform, Vector3 positionToRelease)
