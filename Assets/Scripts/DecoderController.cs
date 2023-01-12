@@ -46,6 +46,7 @@ public class DecoderController : MonoBehaviour
             //}
 
             PawnToMove.GetComponent<PawnController>().Drop();
+            PawnToMove = null;
         }
 
 

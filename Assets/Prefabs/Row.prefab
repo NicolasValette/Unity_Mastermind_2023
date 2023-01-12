@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 4777834743338974863}
   - {fileID: 5854856357734617192}
   - {fileID: 2185054914322973082}
+  _gameManager: {fileID: 0}
 --- !u!1001 &398828176408104393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +67,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398828177374810266}
     m_Modifications:
+    - target: {fileID: 1102521292840001664, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
+      propertyPath: _isPawnSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1738089265991622364, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
       propertyPath: m_Name
       value: Pawn (2)
@@ -139,6 +144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398828177374810266}
     m_Modifications:
+    - target: {fileID: 1102521292840001664, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
+      propertyPath: _isPawnSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1738089265991622364, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
       propertyPath: m_Name
       value: Pawn (3)
@@ -212,6 +221,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398828177374810266}
     m_Modifications:
+    - target: {fileID: 1102521292840001664, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
+      propertyPath: _isPawnSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1738089265991622364, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
       propertyPath: m_Name
       value: Pawn (1)
@@ -285,6 +298,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398828177374810266}
     m_Modifications:
+    - target: {fileID: 1102521292840001664, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
+      propertyPath: _isPawnSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1738089265991622364, guid: 6210269f93aa52341bc039f20e472bcd, type: 3}
       propertyPath: m_Name
       value: Pawn
@@ -426,6 +443,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
+  _isPickable: 0
+  _isPawnSlot: 0
+  stateDrag: 0
 --- !u!114 &2185054914322973082 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7628086087072645171, guid: a239fb2ef34f3144ea4e25da2e5cd72b, type: 3}
@@ -466,6 +486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
+  _isPickable: 0
+  _isPawnSlot: 0
+  stateDrag: 0
 --- !u!114 &4777834743338974863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3873376454685032230, guid: a239fb2ef34f3144ea4e25da2e5cd72b, type: 3}
@@ -495,6 +518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
+  _isPickable: 0
+  _isPawnSlot: 0
+  stateDrag: 0
 --- !u!114 &5854856357734617192 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2796199811329839553, guid: a239fb2ef34f3144ea4e25da2e5cd72b, type: 3}
@@ -524,6 +550,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MastermindManager: {fileID: 7178840201705049224, guid: e3f7c03b39126ef418dd6341aa4dd8b0, type: 3}
+  _isPickable: 0
+  _isPawnSlot: 0
+  stateDrag: 0
 --- !u!4 &8154619631563887957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 478999380446876924, guid: a239fb2ef34f3144ea4e25da2e5cd72b, type: 3}

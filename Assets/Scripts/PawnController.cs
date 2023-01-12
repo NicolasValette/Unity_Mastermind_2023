@@ -99,7 +99,6 @@ public class PawnController : MonoBehaviour
     {
         _actualIndColor = _actualIndColor >= _gameManager.Colors.Length - 1 ? 0 : _actualIndColor + 1;
         _color.material = _gameManager.Colors[_actualIndColor];
-
         IsColored = true;
     }
     public void ChangeColor(Material color)
@@ -148,23 +147,22 @@ public class PawnController : MonoBehaviour
         RaycastHit hit;
         Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(rayToMouse, out hit))
-        {
-            Debug.Log("Drop");
-            if (hit.transform.gameObject.GetComponent<PawnController>()._isPawnSlot)
+        { 
+            if (hit.transform.gameObject.GetComponent<PawnController>() != null && hit.transform.gameObject.GetComponent<PawnController>()._isPawnSlot)
             {
                 Debug.Log("Place");
+                hit.transform.gameObject.SetActive(false);
+                _state.Release(transform, hit.transform.position);
             }
             else
             {
-                
-                _state.Release(transform, _initialPosition);
-                SwitchState();
-                Cursor.visible = true;
+                Debug.Log("Drop");
+                _state.Release(transform, _initialPosition); 
                 Destroy(transform.gameObject);
             }
+            SwitchState();
+            Cursor.visible = true;
         }
-
-
     }
     public void Move()
     {
@@ -173,7 +171,5 @@ public class PawnController : MonoBehaviour
         {
             _state.Move(transform);
         }
-
-
     }
 }
