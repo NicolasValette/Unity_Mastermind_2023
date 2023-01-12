@@ -22,11 +22,17 @@ public class RowController : MonoBehaviour
     public delegate void ValideRowEvent();
     public static event ValideRowEvent OnValid;
 
+    private bool[] _coloredPawn;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _coloredPawn = new bool[_gameManager.CodeLength];
+        for (int i=0; i < _gameManager.CodeLength; i++)
+        {
+            _pawns[i].PositionInd= i;
+        }
     }
 
     // Update is called once per frame
@@ -63,6 +69,25 @@ public class RowController : MonoBehaviour
         if (nbColoredPawn == _gameManager.CodeLength)
         {
             isValid = true;
+            OnValid?.Invoke();
+        }
+    }
+    public void ChangePawn(int place, GameObject Pawn)
+    {
+        _coloredPawn[place] = true;
+        Pawn.transform.SetParent(transform);
+        Pawns[place] = Pawn.GetComponent<PawnController>();
+        int nbColored = 0;
+        for (int i=0; i < _gameManager.CodeLength; i++)
+        {
+            if (_coloredPawn[i])
+            {
+                nbColored++;
+            }
+        }
+        if (nbColored >= _gameManager.CodeLength)
+        {
+            isValid= true;
             OnValid?.Invoke();
         }
     }

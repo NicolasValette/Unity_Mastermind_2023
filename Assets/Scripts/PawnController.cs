@@ -53,6 +53,7 @@ public class PawnController : MonoBehaviour
             return _state.ToString();
         }
     }
+    public int PositionInd { get; set; }
     #endregion
 
     #region Unity components
@@ -152,6 +153,7 @@ public class PawnController : MonoBehaviour
             {
                 Debug.Log("Place");
                 hit.transform.gameObject.SetActive(false);
+                hit.transform.parent.GetComponent<RowController>()?.ChangePawn(hit.transform.gameObject.GetComponent<PawnController>().PositionInd, transform.gameObject);
                 _state.Release(transform, hit.transform.position);
             }
             else
