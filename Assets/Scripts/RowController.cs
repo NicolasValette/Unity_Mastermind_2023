@@ -48,7 +48,7 @@ public class RowController : MonoBehaviour
     {
         for (int i = 0; i < _pawns.Length; i++)
         {
-            _pawns[i].setActive(!_pawns[i].IsActive);
+            _pawns[i].SetActive(!_pawns[i].IsActive);
         }
         IsActive = !IsActive;
     }
@@ -78,6 +78,7 @@ public class RowController : MonoBehaviour
     public void ReactivateSlot(int ind)
     {
         _initialPawns[ind].gameObject.SetActive(true);
+        _initialPawns[ind].SetActive(true);
         _coloredPawn[ind] = false;
     }
     public void ChangePawn(int place, GameObject pawn)

@@ -122,7 +122,7 @@ public class PawnController : MonoBehaviour
         _color.material = _gameManager.Colors[_actualIndColor];
         IsColored = true;
     }
-    public void setActive(bool activity)
+    public void SetActive(bool activity)
     {
         _collider.enabled = activity;
         _isActive= activity;
