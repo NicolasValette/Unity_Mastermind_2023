@@ -2,20 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class DecoderController : MonoBehaviour
 {
 
     private GameObject PawnToMove = null;
+    private bool _canCheck = false;
     // Start is called before the first frame update
+    public static Action OnCheckDemand;
     void Start()
     {
 
     }
 
+    private void OnEnable()
+    {
+        RowController.OnValid += CanCheck;
+        CoderController.OnAnswer += CanCheck;
+    }
+    private void OnDisable()
+    {
+        RowController.OnValid -= CanCheck;
+        CoderController.OnAnswer -= CanCheck;
+    }
     // Update is called once per frame
     void Update()
     {
+        if (_canCheck && Input.GetKeyDown(KeyCode.Return))
+        {
+            OnCheckDemand.Invoke();
+        }
         //drag & drop
 
         if (Input.GetMouseButtonDown(0))
@@ -72,6 +89,10 @@ public class DecoderController : MonoBehaviour
         //}
     }
 
+    public void CanCheck()
+    {
+        _canCheck = !_canCheck;
+    }
     public bool SelectPawnToPlace(RaycastHit hit)
     {
        

@@ -29,12 +29,14 @@ public class CoderController : MonoBehaviour
         //BoardController.OnVerify += checkCode;//
         CheckButton.onClick.AddListener(CheckCode);
         MastermindManager.OnStart += StartGame;
+        DecoderController.OnCheckDemand += CheckCode;
     }
     public void OnDisable()
     {
         //BoardController.OnVerify -= checkCode;
         CheckButton.onClick.RemoveListener(CheckCode);
         MastermindManager.OnStart -= StartGame;
+        DecoderController.OnCheckDemand -= CheckCode;
     }
     // Update is called once per frame
     void Update()
