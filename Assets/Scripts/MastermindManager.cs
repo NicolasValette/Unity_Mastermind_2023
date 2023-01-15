@@ -8,7 +8,8 @@ public class MastermindManager : MonoBehaviour
 {
     #region Serialized attributes
     [SerializeField]
-    private Material[] _pawnMaterials;
+    private GameObject[] _playablePawns;
+   
     [SerializeField]
     private Material _goodAnswerMaterials;
     [SerializeField]
@@ -52,6 +53,10 @@ public class MastermindManager : MonoBehaviour
     {
         return _pawnMaterials;
     }
+    public GameObject[] PlayablePawns
+    {
+        get { return _playablePawns; }
+    }
     #endregion
     #region Events
     public delegate void  StartEvent();
@@ -66,9 +71,16 @@ public class MastermindManager : MonoBehaviour
     public bool IsGameEnd { get; private set; } = false;
 
     #endregion
+
+    private Material[] _pawnMaterials;
     // Start is called before the first frame update
     void Start()
     {
+        _pawnMaterials = new Material[_playablePawns.Length];
+        for (int i=0; i<_playablePawns.Length; i++)
+        {
+            _pawnMaterials[i] = _playablePawns[i].GetComponent<Renderer>().material;
+        }
         //UnityEngine.Cursor.visible= false;
         //_mActivePawnColor.
     }

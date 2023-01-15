@@ -7,6 +7,9 @@ using System;
 public class DecoderController : MonoBehaviour
 {
 
+    [SerializeField]
+    private MastermindManager _gameManager;
+
     private GameObject PawnToMove = null;
     private bool _canCheck = false;
     // Start is called before the first frame update
@@ -56,7 +59,7 @@ public class DecoderController : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetMouseButtonUp(0) && PawnToMove != null)
+        else if (Input.GetMouseButtonUp(0) && PawnToMove != null || GetShortcutPawn())
         {
             Debug.Log("ButtonUp");
             //Ray rayToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -73,6 +76,10 @@ public class DecoderController : MonoBehaviour
             PawnToMove.GetComponent<PawnController>().Drop();
             PawnToMove = null;
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("&");
+        }
 
 
 
@@ -88,7 +95,42 @@ public class DecoderController : MonoBehaviour
         //    }
         //}
     }
+    /* Return the indice of Pawn in array if the good key is pressed, else, return -1*/
+    public bool GetShortcutPawn()
+    {
+        int pawnInd;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
 
+            pawnInd = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            pawnInd = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            pawnInd = 2;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            pawnInd = 3;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            pawnInd = 4;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            pawnInd = 5;
+        }
+        else
+        {
+            return false;
+        }
+        PawnToMove = _gameManager.PlayablePawns[pawnInd].GetComponent<PawnController>().DuplicatePawn(Input.mousePosition, Quaternion.identity);
+        return true;
+    }
     public void CanCheck()
     {
         _canCheck = !_canCheck;

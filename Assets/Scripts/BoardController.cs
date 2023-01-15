@@ -11,6 +11,8 @@ public class BoardController : MonoBehaviour
     private PawnController[] _code;
     [SerializeField]
     private MastermindManager _gameManager;
+    [SerializeField]
+    private Transform _playablePawnStack;
 
     private int _activeRow = -1;
 
@@ -100,6 +102,7 @@ public class BoardController : MonoBehaviour
                     _rows[_activeRow].SwitchActive();         // and activate the next row
                 }
             }
+            _playablePawnStack.position = new Vector3(_playablePawnStack.position.x, _playablePawnStack.position.y, _rows[_activeRow].gameObject.transform.position.z);
         }
     }
     public bool IsColorInCode(Material color)

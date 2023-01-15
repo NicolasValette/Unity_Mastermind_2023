@@ -144,14 +144,19 @@ public class PawnController : MonoBehaviour
         }
         Debug.Log($"New State {gameObject.name} : {_state}");
     }
+    public GameObject DuplicatePawn(Vector3 pos, Quaternion rot)
+    {
+        GameObject newPawn = Instantiate(gameObject, pos, rot);
+
+        newPawn.GetComponent<PawnController>().Initialisation(_gameManager);
+        newPawn.GetComponent<PawnController>().SwitchState();
+        return newPawn;
+    }
     public GameObject Pick(RaycastHit hit)
     {
        
         Cursor.visible = false;
-        GameObject newPawn = Instantiate(hit.transform.gameObject, Input.mousePosition, Quaternion.identity);
-       
-        newPawn.GetComponent<PawnController>().Initialisation(_gameManager);
-        newPawn.GetComponent<PawnController>().SwitchState();
+        GameObject newPawn = DuplicatePawn(Input.mousePosition, Quaternion.identity);
         if (hit.transform.gameObject.GetComponent<PawnController>().IsSlot )
         {
             hit.transform.parent.GetComponent<RowController>().ReactivateSlot(hit.transform.GetComponent<PawnController>().PositionInd);
