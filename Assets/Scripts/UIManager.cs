@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
         CoderController.OnAnswer += CheckButton;
         MastermindManager.OnGameOver += GameOver;
         MastermindManager.OnGameWin += GameWin;
+        BoardController.OnButtonReplace += MoveButtonCheck;
 
     }
     public void OnDisable()
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
         CoderController.OnAnswer -= CheckButton;
         MastermindManager.OnGameOver -= GameOver;
         MastermindManager.OnGameWin += GameWin;
+        BoardController.OnButtonReplace -= MoveButtonCheck;
     }
 
     // Update is called once per frame
@@ -91,5 +93,10 @@ public class UIManager : MonoBehaviour
         _isGameEnd = true;
         _gameWinText.gameObject.SetActive(true);
 
+    }
+    public void MoveButtonCheck(Vector3 position)
+    {
+        Camera.main.WorldToScreenPoint(position);
+        _check.transform.position = Camera.main.WorldToScreenPoint(position);
     }
 }

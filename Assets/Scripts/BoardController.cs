@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,11 +14,14 @@ public class BoardController : MonoBehaviour
     private MastermindManager _gameManager;
     [SerializeField]
     private Transform _playablePawnStack;
+    [SerializeField]
+    private Transform _buttonCheckPos;
 
     private int _activeRow = -1;
 
     public delegate void VerifyEvent();
     public static VerifyEvent OnVerify;
+    public static Action<Vector3> OnButtonReplace;
     public Material[] Code
     {
         get
@@ -103,6 +107,8 @@ public class BoardController : MonoBehaviour
                 }
             }
             _playablePawnStack.position = new Vector3(_playablePawnStack.position.x, _playablePawnStack.position.y, _rows[_activeRow].gameObject.transform.position.z);
+            _buttonCheckPos.position = new Vector3(_buttonCheckPos.position.x, _buttonCheckPos.position.y, _rows[_activeRow].gameObject.transform.position.z + 0.02f);
+            OnButtonReplace?.Invoke(_buttonCheckPos.position);
         }
     }
     public bool IsColorInCode(Material color)
